@@ -2,6 +2,9 @@
   "name": "gh-trend",
   "version": "0.1.0",
   "private": true,
+   "engines" :{
+    "node" : ">=14"
+    },
   "dependencies": {
     "@reduxjs/toolkit": "^1.6.2",
     "cra-template-redux": "1.0.3",
