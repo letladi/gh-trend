@@ -34,7 +34,6 @@ const ContentHeader = () => {
           >
           <Dropdown allowSearch />
           <Dropdown allowSearch />
-          <Dropdown allowSearch />
           </Col>
         </Row>
       </Container>
