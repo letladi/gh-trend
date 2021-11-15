@@ -3,6 +3,7 @@ import { Container, Row, Col } from "react-grid-system";
 import { listButtons } from "../../defaultData";
 import { Link, useLocation } from "react-router-dom";
 import Dropdown from "../Dropdown/Dropdown";
+import Button from '../Button/Button';
 import "./ContentHeader.scss";
 
 const ContentHeader = () => {
@@ -13,20 +14,17 @@ const ContentHeader = () => {
         <Row>
           <Col>
             <div className="button-group">
-              {listButtons.map((button, i) => {
-                console.log(button.url, location.pathname, location, button)
-                return (
-                  <Link to={button.url} key={i}>
-                    <button
-                      className={[
-                        location.pathname === button.url ? "active" : "",
-                      ].join(" ")}
-                    >
-                      {button.title}
-                    </button>
-                  </Link>
-                );
-              })}
+              {listButtons.map((button, i) => (
+                  <Button
+                    key={i}
+                    customClass={[
+                      location.pathname === button.url ? "active" : ""
+                    ].join(" ")}
+                    routerLink
+                    linkUrl={button.url}
+                    title={button.title}
+                  />
+                ))}
             </div>
           </Col>
           <Col

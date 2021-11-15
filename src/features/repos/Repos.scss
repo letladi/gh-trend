@@ -1,0 +1,80 @@
+/* Repo item*/
+.repo-item {
+  padding: 15px 0px;
+  border-bottom: 1px solid var(--grey-light);
+
+  &:last-child {
+    border: none;
+  }
+
+  header {
+    display: flex;
+    justify-content: space-between;
+
+    .repo-title {
+      align-items: center;
+      display: flex;
+
+      svg {
+        margin-right: 10px;
+      }
+
+      a {
+        color: var(--accent);
+        font-size: 20px;
+        font-weight: 300;
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: underline;
+        }
+
+        span {
+          font-weight: 400;
+        }
+      }
+    }
+  }
+
+  .description {
+    margin: 6px 0px;
+    max-width: 60%;
+  }
+
+  footer {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    margin-top: 12px;
+
+    .meta {
+      display: flex;
+
+      .meta-value {
+        display: flex;
+        align-items: center;
+        margin-right: 16px;
+      }
+
+      .developer-avatars {
+        margin-left: 4px;
+
+        img {
+          border-radius: 10px;
+          height: 20px;
+          margin-right: 2px;
+          width: 20px;
+        }
+      }
+    }
+
+    svg {
+      margin-right: 4px;
+    }
+
+    .stars-today {
+      display: flex;
+      align-items: center;
+    }
+  }
+}
