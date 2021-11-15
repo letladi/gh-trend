@@ -1,17 +1,20 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
+import { Container } from 'react-grid-system'
 import { Counter } from "./features/counter/Counter";
 import Devs from "./features/devs/Devs";
 import Repos from "./features/repos/Repos";
-import "./App.css";
+import ContentHeader from './components/ContentHeader/ContentHeader.js';
+import "./App.scss";
 
 function Header() {
   return (
       <div className="jumbotron">
         <h1>Trending</h1>
         <Routes>
-        {['', 'repos'].map(link => (
+        {['', 'repos'].map((link, i) => (
           <Route
+            key={i}
             path={link}
             element={
               <p>
@@ -35,15 +38,23 @@ function Header() {
 
 function App() {
   return (
+
       <div className="page">
           <Header />
+          <Container>
           <div className="page-content">
+            <div className='list-group'>
+              <ContentHeader />
             <Routes>
-              {['', 'repos'].map(url => <Route path={url} element={<Repos />} />)}
+              {['', 'repos'].map((url, i) => <Route key={i} path={url} element={<Repos />} />)}
               <Route path="devs" element={<Devs />} />
             </Routes>
+            </div>
           </div>
+          </Container>
       </div>
+
+
   );
 }
 
