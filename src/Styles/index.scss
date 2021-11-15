@@ -1,0 +1,49 @@
+/* Base Styles */
+:root {
+  --grey-dark: #0d1117;
+  --grey: #161b22;
+  --grey-light: #30363d;
+  --text: #c9d1d9;
+  --text-muted: #8b949e;
+  --button: #21262d;
+  --button-hover: #30363d;
+  --button-hover-border: #8b949e;
+  --accent: #58a6ff;
+  --accent-emphasis: #1f6feb;
+  --fire: #db6d28;
+  --shadow: 0 8px 24px #010409;
+}
+
+html,
+body {
+  margin: 0;
+  background-color: var(--grey-dark);
+  color: var(--text);
+}
+
+/*
+  Header
+*/
+.jumbotron {
+  background-color: var(--grey);
+  border-bottom: 1px solid var(--grey-light);
+  padding: 40px 0px;
+  text-align: center;
+
+  h1 {
+    margin: 0;
+  }
+}
+
+/* Typography */
+html, body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji"
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+}
+
+h1 {
+  font-size: 32px;
+}

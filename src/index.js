@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "react-query";
-import "./index.scss";
+import "./Styles/index.scss";
 import App from "./App";
 import { store } from "./app/store";
 import { Provider } from "react-redux";

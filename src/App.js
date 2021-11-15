@@ -5,45 +5,44 @@ import Devs from "./features/devs/Devs";
 import Repos from "./features/repos/Repos";
 import "./App.css";
 
-function SubHeading() {
+function Header() {
   return (
-    <Routes>
-      <Route
-        path="repos"
-        element={
-          <p className="subheading">
-            See what the Github community is most excited about today.
-          </p>
-        }
-      />
-      <Route
-        path="devs"
-        element={
-          <p className="subheading">
-            These are the developers building the hot tools today.
-          </p>
-        }
-      />
-    </Routes>
+      <div className="jumbotron">
+        <h1>Trending</h1>
+        <Routes>
+        {['', 'repos'].map(link => (
+          <Route
+            path={link}
+            element={
+              <p>
+                See what the Github community is most excited about today.
+              </p>
+            }
+          />
+        ))}
+          <Route
+            path="devs"
+            element={
+              <p>
+                These are the developers building the hot tools today.
+              </p>
+            }
+          />
+        </Routes>
+      </div>
   );
 }
 
 function App() {
-  const links = [
-    { path: "/repos", text: "Repositories" },
-    { path: "/devs", text: "Developers" },
-  ];
   return (
-      <div className="App">
-        <header>
-          <h1 className="heading">Trending</h1>
-          <SubHeading />
+      <div className="page">
+          <Header />
+          <div className="page-content">
             <Routes>
-              <Route path="/" element={<Counter />} />
-              <Route path="repos" element={<Repos />} />
+              {['', 'repos'].map(url => <Route path={url} element={<Repos />} />)}
               <Route path="devs" element={<Devs />} />
             </Routes>
-        </header>
+          </div>
       </div>
   );
 }
