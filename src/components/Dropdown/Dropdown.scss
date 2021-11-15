@@ -1,0 +1,100 @@
+.dropdown {
+  color: var(--text-muted);
+  cursor: pointer;
+  position: relative;
+  z-index: 2;
+
+  .dropdown-header {
+    display: flex;
+    font-size: 14px;
+    z-index: 3;
+
+    label {
+      margin-right: 4px;
+    }
+    span {
+      align-items: center ;
+      display: flex;
+      font-weight: 600;
+
+      &:after {
+        content: '';
+        border-left: 4px solid transparent;
+        border-right: 4px solid transparent;
+        border-top: 4px solid var(--text-muted);
+        height: 0;
+        margin: 2px 0px 0px 4px;
+        width: 0;
+      }
+    }
+  }
+
+  .dropdown-modal {
+    background-clip: padding-box;
+    background-color: var(--grey);
+    border-radius: 6px;
+    border: 1px solid var(--grey-light);
+    box-shadow: var(--shadow);
+    font-size: 12px;
+    margin-bottom: 20px;
+    margin-top: 4px;
+    overflow: hidden;
+    position: absolute;
+    right: 0;
+    width: 300px;
+    z-index: 10;
+
+    .dropdown-modal-header {
+      border-bottom: 1px solid var(--grey-light);
+      color: var(--text-muted);
+      font-size: 12px;
+      line-height: 16px;
+      padding: 8px 10px;
+    }
+
+    .options-search {
+      padding: 10px;
+      border-bottom: 1px solid var(--grey-light);
+
+      input{
+        background-color: var(--grey-dark);
+        border-radius: 6px;
+        border: 1px solid var(--grey-light);
+        box-sizing:border-box;
+        color: var(--text);
+        display: block;
+        font-size: 14px;
+        line-height: 20px;
+        max-width: 100%;
+        min-width: 100%;
+        outline: none;
+        padding: 5px;
+        width: 100%;
+      }
+    }
+
+    .dropdown-option {
+      display: block;
+      padding: 8px 8px 8px 30px;
+      overflow: hidden;
+      color: inherit;
+      cursor: pointer;
+      border-bottom: 1px solid var(--grey-light);
+      text-align: left;
+
+      &:hover {
+        background-color: var(--accent-emphasis);
+        border-bottom-color: var(--accent-emphasis);
+        color: var(--text);
+      }
+    }
+  }
+
+  .modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+  }
+}
