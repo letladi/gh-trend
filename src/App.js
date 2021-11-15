@@ -38,7 +38,6 @@ function Header() {
 
 function App() {
   return (
-
       <div className="page">
           <Header />
           <Container>

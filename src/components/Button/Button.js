@@ -29,4 +29,8 @@ const Button = ({ customClass, routerLink, linkUrl, icon, title, action }) => {
   }
 };
 
+Button.defaultProps = {
+  customClass: ''
+};
+
 export default Button;

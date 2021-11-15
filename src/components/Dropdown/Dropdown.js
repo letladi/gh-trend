@@ -45,9 +45,10 @@ const Dropdown = (props) => {
                   />
                 </div>
               )}
-              {options.map((option) => {
+              {options.map((option, i) => {
                 return (
                   <div
+                    key={i}
                     className="dropdown-option"
                     onClick={() => {
                       selectOption(option);
