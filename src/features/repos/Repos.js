@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { useQuery } from "react-query";
 import { BiGitRepoForked } from "react-icons/bi";
 import { HiOutlineBookmarkAlt, HiOutlineStar } from "react-icons/hi";
@@ -37,8 +37,8 @@ function RepoItem(props) {
                   Built by
                   <span className="developer-avatars">
                     {props.builtBy
-                      .map(({ avatar, username }) => (
-                        <img src={avatar} alt={`thumbnail for ${username}`} />
+                      .map(({ avatar, username }, i) => (
+                        <img key={i} src={avatar} alt={`thumbnail for ${username}`} />
                       ))}
                   </span>
                 </div>
@@ -54,12 +54,40 @@ function RepoItem(props) {
   );
 };
 
+
+const getDateRanges = (list) => {
+  const ret = new Set();
+  list.forEach(item => {
+    ret.add(item.since);
+  });
+  return Array.from(ret);
+};
+
+const getLanguages = (list) => {
+  const ret = new Set();
+  list.forEach(item => {
+    ret.add(item.language);
+  });
+  return Array.from(ret);
+}
+
 function Repos() {
+  const [selectedDateRange, setSelectedDateRange] = useState('');
+  const [dateRanges, setDateRanges] = useState(null);
+  const [languages, setLanguages] = useState(null);
   const { isLoading, error, data, isFetching } = useQuery("repoData", () =>
     fetch("https://gh-trending-api.herokuapp.com/repositories").then((res) =>
       res.json()
     )
   );
+
+  if (data) {
+    if (!dateRanges) setDateRanges(getDateRanges(data));
+    if (!languages) setLanguages(getLanguages(data));
+  }
+
+  console.log('dateRanges', dateRanges);
+  console.log('languages', languages);
 
   if (isLoading) {
     return null;
@@ -67,8 +95,8 @@ function Repos() {
 
   return (
     <>
-      {data.map(repo => (
-        <RepoItem {...repo} />
+      {data.map((repo, i) => (
+        <RepoItem key={i} {...repo} />
       ))}
     </>
   );
