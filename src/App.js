@@ -1,30 +1,50 @@
 import React from "react";
-import logo from "./logo.svg";
 import { Routes, Route } from "react-router-dom";
 import { Counter } from "./features/counter/Counter";
 import Devs from "./features/devs/Devs";
 import Repos from "./features/repos/Repos";
-import Nav from "./components/Nav";
 import "./App.css";
+
+function SubHeading() {
+  return (
+    <Routes>
+      <Route
+        path="repos"
+        element={
+          <p className="subheading">
+            See what the Github community is most excited about today.
+          </p>
+        }
+      />
+      <Route
+        path="devs"
+        element={
+          <p className="subheading">
+            These are the developers building the hot tools today.
+          </p>
+        }
+      />
+    </Routes>
+  );
+}
 
 function App() {
   const links = [
-    { path: "/", text: "Counter" },
     { path: "/repos", text: "Repositories" },
     { path: "/devs", text: "Developers" },
   ];
-  const $navComp = <Nav links={links} />;
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Routes>
-          <Route path="/" element={<Counter>{$navComp}</Counter>} />
-          <Route path="repos" element={<Repos>{$navComp}</Repos>} />
-          <Route path="devs" element={<Devs>{$navComp}</Devs>} />
-        </Routes>
-      </header>
-    </div>
+      <div className="App">
+        <header>
+          <h1 className="heading">Trending</h1>
+          <SubHeading />
+            <Routes>
+              <Route path="/" element={<Counter />} />
+              <Route path="repos" element={<Repos />} />
+              <Route path="devs" element={<Devs />} />
+            </Routes>
+        </header>
+      </div>
   );
 }
 

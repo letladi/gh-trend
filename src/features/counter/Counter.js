@@ -8,7 +8,7 @@ import {
   incrementIfOdd,
   selectCount,
 } from "./counterSlice";
-import styles from "./Counter.module.css";
+import styles from "./Counter.module.scss";
 
 export function Counter(props) {
   const count = useSelector(selectCount);
@@ -64,7 +64,6 @@ export function Counter(props) {
       </div>
 
       <h2>Counter</h2>
-      {props.children}
     </div>
   );
 }

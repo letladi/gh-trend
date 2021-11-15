@@ -1,10 +1,17 @@
 import React from "react";
+import { useQuery } from "react-query";
 
-function Repos(props) {
+function Repos() {
+  const { isLoading, error, data, isFetching } = useQuery("repoData", () =>
+    fetch("https://gh-trending-api.herokuapp.com/repositories").then((res) =>
+      res.json()
+    )
+  );
+
+  console.log("repos", data);
+
   return (
     <>
-      <h2>Repos</h2>
-      {props.children}
     </>
   );
 }
