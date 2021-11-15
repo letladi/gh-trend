@@ -1,10 +1,12 @@
-import React, {useState} from "react";
+import React from "react";
 import { useQuery } from "react-query";
+import { useDispatch } from "react-redux";
+import { setLoading, setApiData } from "../counter/counterSlice";
 import { BiGitRepoForked } from "react-icons/bi";
 import { HiOutlineBookmarkAlt, HiOutlineStar } from "react-icons/hi";
 import { Container, Row, Col } from "react-grid-system";
 import Button from "../../components/Button/Button";
-import './Repos.scss';
+import "./Repos.scss";
 
 function RepoItem(props) {
   return (
@@ -19,11 +21,15 @@ function RepoItem(props) {
                   {props.username} / <span>{props.repositoryName}</span>
                 </a>
               </div>
-              <Button icon={<HiOutlineStar />} title="Star" isExternal routerLink linkUrl={props.url} />
+              <Button
+                icon={<HiOutlineStar />}
+                title="Star"
+                isExternal
+                routerLink
+                linkUrl={props.url}
+              />
             </header>
-            <div className="description">
-              {props.description}
-            </div>
+            <div className="description">{props.description}</div>
             <footer>
               <div className="meta">
                 <div className="meta-value">{props.language}</div>
@@ -36,10 +42,13 @@ function RepoItem(props) {
                 <div className="meta-value">
                   Built by
                   <span className="developer-avatars">
-                    {props.builtBy
-                      .map(({ avatar, username }, i) => (
-                        <img key={i} src={avatar} alt={`thumbnail for ${username}`} />
-                      ))}
+                    {props.builtBy.map(({ avatar, username }, i) => (
+                      <img
+                        key={i}
+                        src={avatar}
+                        alt={`thumbnail for ${username}`}
+                      />
+                    ))}
                   </span>
                 </div>
               </div>
@@ -52,42 +61,18 @@ function RepoItem(props) {
       </Container>
     </div>
   );
-};
-
-
-const getDateRanges = (list) => {
-  const ret = new Set();
-  list.forEach(item => {
-    ret.add(item.since);
-  });
-  return Array.from(ret);
-};
-
-const getLanguages = (list) => {
-  const ret = new Set();
-  list.forEach(item => {
-    ret.add(item.language);
-  });
-  return Array.from(ret);
 }
 
 function Repos() {
-  const [selectedDateRange, setSelectedDateRange] = useState('');
-  const [dateRanges, setDateRanges] = useState(null);
-  const [languages, setLanguages] = useState(null);
-  const { isLoading, error, data, isFetching } = useQuery("repoData", () =>
+  const dispatch = useDispatch();
+  const { isLoading, data, isFetched } = useQuery("repoData", () =>
     fetch("https://gh-trending-api.herokuapp.com/repositories").then((res) =>
       res.json()
     )
   );
 
-  if (data) {
-    if (!dateRanges) setDateRanges(getDateRanges(data));
-    if (!languages) setLanguages(getLanguages(data));
-  }
-
-  console.log('dateRanges', dateRanges);
-  console.log('languages', languages);
+  if (isLoading) dispatch(setLoading());
+  if (isFetched) dispatch(setApiData(data));
 
   if (isLoading) {
     return null;

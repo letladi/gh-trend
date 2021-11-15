@@ -5,19 +5,25 @@ import { lanuages } from "../../defaultData";
 const Dropdown = (props) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState(null);
-  const [options, setOptions] = useState(lanuages);
+  const [options, setOptions] = useState(props.optionList);
+  const [filteredOptions, setFilteredOptions] = useState(options);
+
+  console.log(options);
 
   useEffect(() => {
     setSelectedOption("All");
   }, []);
 
-  const toggleDropdown = () => setIsOpen(!isOpen);
+  const toggleDropdown = () => {
+    setIsOpen(!isOpen);
+    if (isOpen) setFilteredOptions(options);
+  };
 
   const searchFilters = (e) => {
-    let filteredOptions = lanuages.filter((option) =>
+    let ret = lanuages.filter((option) =>
       option.toLowerCase().includes(e.target.value.toLowerCase())
     );
-    setOptions(filteredOptions);
+    setFilteredOptions(ret);
   };
 
   const selectOption = (option) => {
@@ -28,36 +34,36 @@ const Dropdown = (props) => {
   return (
     <div className="dropdown">
       <div className="dropdown-header" onClick={toggleDropdown}>
-        <label>Language:</label>
+        <label>{props.optionName}:</label>
         <span>{selectedOption}</span>
       </div>
       {isOpen && (
         <>
           <div className="dropdown-modal">
-            <div className="dropdown-modal-header">Select a language</div>
+            <div className="dropdown-modal-header">
+              Select {props.optionName}
+            </div>
             <div className="dropdown-modal-filters">
               {props.allowSearch && (
                 <div className="options-search">
                   <input
                     type="text"
                     onChange={searchFilters}
-                    placeholder="Filter languages"
+                    placeholder={`Filter ${props.optionName}`}
                   />
                 </div>
               )}
-              {options.map((option, i) => {
-                return (
-                  <div
-                    key={i}
-                    className="dropdown-option"
-                    onClick={() => {
-                      selectOption(option);
-                    }}
-                  >
-                    {option}
-                  </div>
-                );
-              })}
+              {filteredOptions.map((option, i) => (
+                <div
+                  key={i}
+                  className="dropdown-option"
+                  onClick={() => {
+                    selectOption(option);
+                  }}
+                >
+                  {option}
+                </div>
+              ))}
             </div>
           </div>
           <div className="modal-backdrop" onClick={toggleDropdown}></div>
