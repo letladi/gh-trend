@@ -1,0 +1,93 @@
+
+/* DevItem */
+.dev-item {
+  padding: 15px 0px;
+  border-bottom: 1px solid var(--grey-light);
+  color: var(--text-muted);
+
+  &:last-child {
+    border: none;
+  }
+
+  .dev-bio {
+    display: flex;
+
+    span {
+      font-size: 12px;
+    }
+
+    img {
+      border-radius: 50%;
+      margin: 0px 16px;
+      max-width: 48px;
+    }
+
+    .dev-details {
+      display: flex;
+      flex-direction: column;
+
+      a {
+        &.dev-name {
+          color: var(--accent);
+          font-size: 20px;
+          text-decoration: none;
+          font-weight: 600;
+        }
+      }
+    }
+  }
+
+  .dev-repo {
+    display: flex;
+    flex-direction: column;
+
+    svg {
+      font-size: 20px;
+    }
+
+    span {
+      text-transform: uppercase;
+      font-size: 12px;
+
+      svg {
+        stroke: var(--fire);
+      }
+    }
+
+    a {
+      color: var(--accent);
+      font-weight: 600;
+
+      svg {
+        stroke: var(--text-muted);
+      }
+    }
+
+    span, a {
+      display: flex;
+      align-items: center;
+      margin-bottom: 4px;
+
+      svg {
+        margin-right: 4px;
+      }
+    }
+
+    p {
+      font-size: 12px;
+      margin: 0;
+    }
+  }
+
+  .button-list {
+    display: flex;
+    justify-content: flex-end;
+    button {
+      margin-right: 8px;
+
+      &:last-child {
+        margin-right: 0px;
+      }
+    }
+  }
+}
