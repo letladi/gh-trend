@@ -2,26 +2,41 @@ import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import "./Button.scss";
 
-const Button = ({ customClass, routerLink, linkUrl, icon, title, action }) => {
+const Button = ({ customClass, routerLink, isExternal, linkUrl, icon, title, action }) => {
   const location = useLocation();
 
   if (routerLink) {
-    return (
-      <Link to={linkUrl}>
-        <button
-          className={[
-            customClass,
-            location.pathname === linkUrl ? "active" : "",
-          ].join(" ")}
-        >
-          {icon}
-          {title}
-        </button>
-      </Link>
-    );
+    if (isExternal) {
+      return (
+          <a
+          href={linkUrl} target='_blank'
+            className={[
+              customClass,
+              'button'
+            ].join(" ")}
+          >
+            {icon}
+            {title}
+          </a>
+      );
+    } else {
+      return (
+        <Link to={linkUrl} className={[
+          customClass,
+          'button'
+        ].join(" ")}>
+            {icon}
+            {title}
+        </Link>
+      );
+    }
+
   } else {
     return (
-      <button className={customClass} onclick={action}>
+      <button className={[
+        customClass,
+        'button'
+      ].join(" ")} onclick={action}>
         {icon}
         {title}
       </button>

@@ -15,11 +15,11 @@ function RepoItem(props) {
             <header>
               <div className="repo-title">
                 <HiOutlineBookmarkAlt />
-                <a href="#" target="_blank">
+                <a href={props.url} target="_blank">
                   {props.username} / <span>{props.repositoryName}</span>
                 </a>
               </div>
-              <Button icon={<HiOutlineStar />} title="Star" />
+              <Button icon={<HiOutlineStar />} title="Star" isExternal routerLink linkUrl={props.url} />
             </header>
             <div className="description">
               {props.description}
@@ -61,14 +61,15 @@ function Repos() {
     )
   );
 
-  console.log("repos", data);
+  if (isLoading) {
+    return null;
+  }
 
   return (
     <>
       {data.map(repo => (
         <RepoItem {...repo} />
       ))}
-
     </>
   );
 }

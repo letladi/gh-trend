@@ -17,9 +17,7 @@ const ContentHeader = () => {
               {listButtons.map((button, i) => (
                   <Button
                     key={i}
-                    customClass={[
-                      location.pathname === button.url ? "active" : ""
-                    ].join(" ")}
+                    customClass={location.pathname === button.url ? "active" : ""}
                     routerLink
                     linkUrl={button.url}
                     title={button.title}
