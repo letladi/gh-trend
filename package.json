@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "engines": {
-   "node": "14.x"
- },
+    "node": "14.x"
+  },
   "dependencies": {
     "@reduxjs/toolkit": "^1.6.2",
     "cra-template-redux": "1.0.3",
