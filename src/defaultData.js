@@ -10,13 +10,3 @@ export const listButtons = [
     path: "/devs",
   },
 ];
-
-export const lanuages = [
-  "All",
-  "C++",
-  "HTML",
-  "Java",
-  "Javascript",
-  "PHP",
-  "Python",
-];

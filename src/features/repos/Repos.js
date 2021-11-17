@@ -1,7 +1,13 @@
 import React from "react";
 import { useQuery } from "react-query";
-import { useDispatch } from "react-redux";
-import { setLoading, setApiData } from "../counter/counterSlice";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  setLoading,
+  setApiData,
+  filterDataForDisplay,
+  getDateRangeFilter,
+  getLanguageFilter,
+} from "../trends/trendsSlice";
 import { BiGitRepoForked } from "react-icons/bi";
 import { HiOutlineBookmarkAlt, HiOutlineStar } from "react-icons/hi";
 import { Container, Row, Col } from "react-grid-system";
@@ -65,6 +71,8 @@ function RepoItem(props) {
 
 function Repos() {
   const dispatch = useDispatch();
+  const languageFilter = useSelector(getLanguageFilter);
+  const dateRangeFilter = useSelector(getDateRangeFilter);
   const { isLoading, data, isFetched } = useQuery("repoData", () =>
     fetch("https://gh-trending-api.herokuapp.com/repositories").then((res) =>
       res.json()
@@ -80,9 +88,11 @@ function Repos() {
 
   return (
     <>
-      {data.map((repo, i) => (
-        <RepoItem key={i} {...repo} />
-      ))}
+      {filterDataForDisplay(data, { languageFilter, dateRangeFilter }).map(
+        (repo, i) => (
+          <RepoItem key={i} {...repo} />
+        )
+      )}
     </>
   );
 }

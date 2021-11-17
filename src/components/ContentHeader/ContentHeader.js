@@ -3,11 +3,13 @@ import { Container, Row, Col } from "react-grid-system";
 import { useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  getLanguageResetOption,
+  getDateRangeResetOption,
   getDateRangesSelector,
   getLanguagesSelector,
   filterDateRange,
   filterLanguage,
-} from "../../features/counter/counterSlice";
+} from "../../features/trends/trendsSlice";
 import { listButtons } from "../../defaultData";
 import Dropdown from "../Dropdown/Dropdown";
 import Button from "../Button/Button";
@@ -16,6 +18,8 @@ import "./ContentHeader.scss";
 const ContentHeader = () => {
   const location = useLocation();
   const languages = useSelector(getLanguagesSelector);
+  const languageResetOption = useSelector(getLanguageResetOption);
+  const dateRangeResetOption = useSelector(getDateRangeResetOption);
   const dateRanges = useSelector(getDateRangesSelector);
   const dispatch = useDispatch();
 
@@ -29,7 +33,7 @@ const ContentHeader = () => {
                 <Button
                   key={i}
                   customClass={
-                    button.url.find((u) => u === location.pathname)
+                    button.url.find((urlVal) => urlVal === location.pathname)
                       ? "active"
                       : ""
                   }
@@ -51,7 +55,7 @@ const ContentHeader = () => {
               <Dropdown
                 optionName={"Language"}
                 optionList={languages}
-                resetOption="All"
+                resetOption={languageResetOption}
                 onSelect={(option) => dispatch(filterLanguage(option))}
                 allowSearch
               />
@@ -60,7 +64,7 @@ const ContentHeader = () => {
               <Dropdown
                 optionName={"Date Range"}
                 optionList={dateRanges}
-                resetOption="All"
+                resetOption={dateRangeResetOption}
                 onSelect={(option) => dispatch(filterDateRange(option))}
                 allowSearch={dateRanges.length > 1}
               />

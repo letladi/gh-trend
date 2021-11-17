@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "./Dropdown.scss";
-import { lanuages } from "../../defaultData";
 
 const Dropdown = (props) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -14,7 +13,7 @@ const Dropdown = (props) => {
   };
 
   const searchFilters = (e) => {
-    let ret = lanuages.filter((option) =>
+    let ret = options.filter((option) =>
       option.toLowerCase().includes(e.target.value.toLowerCase())
     );
     setFilteredOptions(ret);

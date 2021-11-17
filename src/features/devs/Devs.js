@@ -6,8 +6,14 @@ import {
   HiOutlineBookmarkAlt,
   HiOutlineFire,
 } from "react-icons/hi";
-import { useDispatch } from "react-redux";
-import { setLoading, setApiData } from "../counter/counterSlice";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  setLoading,
+  setApiData,
+  filterDataForDisplay,
+  getDateRangeFilter,
+  getLanguageFilter,
+} from "../trends/trendsSlice";
 import "./Devs.scss";
 import Button from "../../components/Button/Button";
 
@@ -62,6 +68,8 @@ function DevItem(props) {
 
 function Devs() {
   const dispatch = useDispatch();
+  const languageFilter = useSelector(getLanguageFilter);
+  const dateRangeFilter = useSelector(getDateRangeFilter);
   const { isLoading, data, isFetched } = useQuery("devData", () =>
     fetch("https://gh-trending-api.herokuapp.com/developers").then((res) =>
       res.json()
@@ -75,9 +83,11 @@ function Devs() {
 
   return (
     <>
-      {data.map((item, i) => (
-        <DevItem key={i} {...item} />
-      ))}
+      {filterDataForDisplay(data, { languageFilter, dateRangeFilter }).map(
+        (item, i) => (
+          <DevItem key={i} {...item} />
+        )
+      )}
     </>
   );
 }
