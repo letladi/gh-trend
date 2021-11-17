@@ -1,12 +1,22 @@
 export const listButtons = [
   {
     title: "Repositories",
-    url: "/repos",
+    url: ["/repos", "", "/"],
+    path: "/repos",
   },
   {
     title: "Developers",
-    url: "/devs"
-  }
+    url: ["/devs"],
+    path: "/devs",
+  },
 ];
 
-export const lanuages = ["All", "C++", "HTML", "Java", "Javascript", "PHP", "Python"];
+export const lanuages = [
+  "All",
+  "C++",
+  "HTML",
+  "Java",
+  "Javascript",
+  "PHP",
+  "Python",
+];

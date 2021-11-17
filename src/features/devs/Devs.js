@@ -13,7 +13,7 @@ import Button from "../../components/Button/Button";
 
 function DevItem(props) {
   return (
-    <div class="dev-item">
+    <div className="dev-item">
       <Container>
         <Row>
           <Col>

@@ -25,9 +25,13 @@ const ContentHeader = () => {
               {listButtons.map((button, i) => (
                 <Button
                   key={i}
-                  customClass={location.pathname === button.url ? "active" : ""}
+                  customClass={
+                    button.url.find((u) => u === location.pathname)
+                      ? "active"
+                      : ""
+                  }
                   routerLink
-                  linkUrl={button.url}
+                  linkUrl={button.path}
                   title={button.title}
                 />
               ))}
@@ -51,7 +55,7 @@ const ContentHeader = () => {
               <Dropdown
                 optionName={"Date Range"}
                 optionList={dateRanges}
-                allowSearch
+                allowSearch={dateRanges.length > 1}
               />
             ) : null}
           </Col>
