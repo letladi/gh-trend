@@ -5,10 +5,8 @@ import { lanuages } from "../../defaultData";
 const Dropdown = (props) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState(null);
-  const [options, setOptions] = useState(props.optionList);
+  const [options] = useState(props.optionList);
   const [filteredOptions, setFilteredOptions] = useState(options);
-
-  console.log(options);
 
   useEffect(() => {
     setSelectedOption("All");

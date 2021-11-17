@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { Routes, Route, useLocation } from "react-router-dom";
-import { useQuery } from "react-query";
+import React from "react";
+import { Routes, Route } from "react-router-dom";
 import { Container } from "react-grid-system";
 import Devs from "./features/devs/Devs";
 import Repos from "./features/repos/Repos";
@@ -33,32 +32,6 @@ function Header() {
 }
 
 function App() {
-  // const location = useLocation();
-  // const [apiUrl, setApiUrl] = useState(null);
-  // const [apiResponse, setApiResponse] = useState({});
-
-  // useEffect(() => {
-  //   let apiUrl;
-  //   if (location.pathname === "/" || location.pathname === "/repos") {
-  //     apiUrl = ("https://gh-trending-api.herokuapp.com/repositories");
-  //   } else if (location.pathname === "/devs") {
-  //     apiUrl = ("https://gh-trending-api.herokuapp.com/developers");
-  //   }
-
-  //   // const { isLoading, error, data, isFetching }
-  //   const apiResponse = useQuery("devData", () =>
-  //   fetch(apiUrl).then((res) =>
-  //     res.json()
-  //   )
-  // );
-
-  // setApiResponse(apiResponse);
-
-  // }, [apiUrl]);
-
-  // useEffect(() => {
-  //   console.log("location changed", location);
-  // }, [location]);
   return (
     <div className="page">
       <Header />
