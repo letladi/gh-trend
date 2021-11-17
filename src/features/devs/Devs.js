@@ -18,11 +18,11 @@ function DevItem(props) {
         <Row>
           <Col>
             <div className="dev-bio">
-              <span>{props.rank}</span>
-              <img src={props.avatar} />
+              <span className="rank">{props.rank}</span>
+              <img src={props.avatar} alt={"dev avatar"} />
               <div className="dev-details">
-                <a className="dev-name">{props.name}</a>
-                <a className="dev-handle">{props.username}</a>
+                <span className="dev-name">{props.name}</span>
+                <span className="dev-handle">{props.username}</span>
               </div>
             </div>
           </Col>
@@ -31,10 +31,10 @@ function DevItem(props) {
               <span>
                 <HiOutlineFire /> Popular Repo
               </span>
-              <a>
+              <span className="repo-name">
                 <HiOutlineBookmarkAlt />{" "}
                 {props.popularRepository.repositoryName}
-              </a>
+              </span>
               <p>
                 {props.popularRepository.description
                   ? props.popularRepository.description
