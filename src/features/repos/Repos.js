@@ -17,7 +17,7 @@ function RepoItem(props) {
             <header>
               <div className="repo-title">
                 <HiOutlineBookmarkAlt />
-                <a href={props.url} target="_blank">
+                <a href={props.url} target="_blank" rel="noreferrer">
                   {props.username} / <span>{props.repositoryName}</span>
                 </a>
               </div>

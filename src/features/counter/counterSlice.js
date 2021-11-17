@@ -43,6 +43,12 @@ export const counterSlice = createSlice({
     setLoading: (state) => {
       state.loading = true;
     },
+    filterLanguage: (state, action) => {
+      state.languageFilter = action.payload;
+    },
+    filterDateRange: (state, action) => {
+      state.dateRangeFilter = action.payload;
+    },
     // Use the PayloadAction type to declare the contents of `action.payload`
     incrementByAmount: (state, action) => {
       state.value += action.payload;
@@ -68,6 +74,8 @@ export const {
   incrementByAmount,
   setLoading,
   setApiData,
+  filterLanguage,
+  filterDateRange,
 } = counterSlice.actions;
 
 // The function below is called a selector and allows us to select a value from

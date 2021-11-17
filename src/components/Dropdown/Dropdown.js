@@ -1,16 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./Dropdown.scss";
 import { lanuages } from "../../defaultData";
 
 const Dropdown = (props) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState(null);
+  const [selectedOption, setSelectedOption] = useState(props.resetOption);
   const [options] = useState(props.optionList);
   const [filteredOptions, setFilteredOptions] = useState(options);
-
-  useEffect(() => {
-    setSelectedOption("All");
-  }, []);
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
@@ -51,12 +47,24 @@ const Dropdown = (props) => {
                   />
                 </div>
               )}
+              {props.resetOption && (
+                <div
+                  className="dropdown-option"
+                  onClick={() => {
+                    selectOption(props.resetOption);
+                    props.onSelect(null);
+                  }}
+                >
+                  {props.resetOption}
+                </div>
+              )}
               {filteredOptions.map((option, i) => (
                 <div
                   key={i}
                   className="dropdown-option"
                   onClick={() => {
                     selectOption(option);
+                    props.onSelect(option);
                   }}
                 >
                   {option}

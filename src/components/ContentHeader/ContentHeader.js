@@ -1,10 +1,12 @@
 import React from "react";
 import { Container, Row, Col } from "react-grid-system";
 import { useLocation } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   getDateRangesSelector,
   getLanguagesSelector,
+  filterDateRange,
+  filterLanguage,
 } from "../../features/counter/counterSlice";
 import { listButtons } from "../../defaultData";
 import Dropdown from "../Dropdown/Dropdown";
@@ -15,6 +17,7 @@ const ContentHeader = () => {
   const location = useLocation();
   const languages = useSelector(getLanguagesSelector);
   const dateRanges = useSelector(getDateRangesSelector);
+  const dispatch = useDispatch();
 
   return (
     <div className="content-header">
@@ -48,6 +51,8 @@ const ContentHeader = () => {
               <Dropdown
                 optionName={"Language"}
                 optionList={languages}
+                resetOption="All"
+                onSelect={(option) => dispatch(filterLanguage(option))}
                 allowSearch
               />
             ) : null}
@@ -55,6 +60,8 @@ const ContentHeader = () => {
               <Dropdown
                 optionName={"Date Range"}
                 optionList={dateRanges}
+                resetOption="All"
+                onSelect={(option) => dispatch(filterDateRange(option))}
                 allowSearch={dateRanges.length > 1}
               />
             ) : null}
