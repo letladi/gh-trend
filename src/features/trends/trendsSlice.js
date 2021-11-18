@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   value: 0,
@@ -8,7 +8,7 @@ const initialState = {
   data: [],
 };
 
-export const counterSlice = createSlice({
+export const trendsSlice = createSlice({
   name: "trends",
   initialState,
   // The `reducers` field lets us define reducers and generate associated actions
@@ -19,6 +19,7 @@ export const counterSlice = createSlice({
     },
     setLoading: (state) => {
       state.loading = true;
+      state.languageFilter = state.dateRangeFilter = null;
       state.data = [];
     },
     filterLanguage: (state, action) => {
@@ -31,7 +32,7 @@ export const counterSlice = createSlice({
 });
 
 export const { setLoading, setApiData, filterLanguage, filterDateRange } =
-  counterSlice.actions;
+  trendsSlice.actions;
 
 export const getDateRangesSelector = (state) => {
   return getKeyValues(state.trends.data, "since");
@@ -76,4 +77,4 @@ function getKeyValues(list, key) {
   return Array.from(ret);
 }
 
-export default counterSlice.reducer;
+export default trendsSlice.reducer;

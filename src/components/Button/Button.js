@@ -1,42 +1,40 @@
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./Button.scss";
 
-const Button = ({ customClass, routerLink, isExternal, linkUrl, icon, title, action }) => {
-  const location = useLocation();
-
+const Button = ({
+  customClass,
+  routerLink,
+  isExternal,
+  linkUrl,
+  icon,
+  title,
+  action,
+}) => {
   if (routerLink) {
     if (isExternal) {
       return (
-          <a
-          href={linkUrl} target='_blank'
-            className={[
-              customClass,
-              'button'
-            ].join(" ")}
-          >
-            {icon}
-            {title}
-          </a>
+        <a
+          href={linkUrl}
+          target="_blank"
+          className={[customClass, "button"].join(" ")}
+          rel="noreferrer"
+        >
+          {icon}
+          {title}
+        </a>
       );
     } else {
       return (
-        <Link to={linkUrl} className={[
-          customClass,
-          'button'
-        ].join(" ")}>
-            {icon}
-            {title}
+        <Link to={linkUrl} className={[customClass, "button"].join(" ")}>
+          {icon}
+          {title}
         </Link>
       );
     }
-
   } else {
     return (
-      <button className={[
-        customClass,
-        'button'
-      ].join(" ")} onclick={action}>
+      <button className={[customClass, "button"].join(" ")} onclick={action}>
         {icon}
         {title}
       </button>
@@ -45,7 +43,7 @@ const Button = ({ customClass, routerLink, isExternal, linkUrl, icon, title, act
 };
 
 Button.defaultProps = {
-  customClass: ''
+  customClass: "",
 };
 
 export default Button;
