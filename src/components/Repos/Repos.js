@@ -7,11 +7,11 @@ import {
   filterDataForDisplay,
   getDateRangeFilter,
   getLanguageFilter,
-} from "../trends/trendsSlice";
+} from "../../state/trendsSlice";
 import { BiGitRepoForked } from "react-icons/bi";
 import { HiOutlineBookmarkAlt, HiOutlineStar } from "react-icons/hi";
 import { Container, Row, Col } from "react-grid-system";
-import Button from "../../components/Button/Button";
+import Button from "../Button/Button";
 import "./Repos.scss";
 
 function RepoItem(props) {

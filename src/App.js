@@ -1,8 +1,8 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import { Container } from "react-grid-system";
-import Devs from "./features/devs/Devs";
-import Repos from "./features/repos/Repos";
+import Devs from "./components/Devs/Devs.js";
+import Repos from "./components/Repos/Repos.js";
 import ContentHeader from "./components/ContentHeader/ContentHeader.js";
 import "./App.scss";
 

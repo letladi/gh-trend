@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import trendsReducer from "../features/trends/trendsSlice";
+import trendsReducer from "./trendsSlice";
 
 export const store = configureStore({
   reducer: {

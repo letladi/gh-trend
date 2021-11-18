@@ -13,9 +13,9 @@ import {
   filterDataForDisplay,
   getDateRangeFilter,
   getLanguageFilter,
-} from "../trends/trendsSlice";
+} from "../../state/trendsSlice";
 import "./Devs.scss";
-import Button from "../../components/Button/Button";
+import Button from "../Button/Button";
 
 function DevItem(props) {
   return (

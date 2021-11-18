@@ -9,7 +9,7 @@ import {
   getLanguagesSelector,
   filterDateRange,
   filterLanguage,
-} from "../../features/trends/trendsSlice";
+} from "../../state/trendsSlice";
 import { listButtons } from "../../defaultData";
 import Dropdown from "../Dropdown/Dropdown";
 import Button from "../Button/Button";
